@@ -1892,6 +1892,21 @@ input, select, textarea {
 						background-color: transparent;
 					}
 
+/* Contact */
+
+	ul.contact {
+		list-style: none;
+	}
+	
+		ul.contact li {
+			margin-bottom: 2.0em;
+		}
+			
+			ul.contact li h4 {
+				margin-top: 0.02em;
+ 				margin-bottom: 0.02em;
+			}
+
 /* Actions */
 
 	ul.actions {
