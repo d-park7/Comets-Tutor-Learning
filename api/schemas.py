@@ -5,18 +5,6 @@ from bson import ObjectId
 from typing import Optional
 
 
-class UserBaseSchema(BaseModel):
-    name: str
-    email: str
-    photo: str
-    role: str | None = None
-    created_at: datetime | None = None
-    updated_at: datetime | None = None
-
-    class Config:
-        orm_mode = True
-
-        
 # MongoDB stores data as BSON. FastAPI encodes and decodes data as JSON strings.
 # BSON has support for additional non-JSON-native data types, including ObjectId 
 # which can't be directly encoded as JSON. Because of this, we convert ObjectIds 
