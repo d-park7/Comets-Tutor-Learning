@@ -1,5 +1,8 @@
 from pydantic import BaseSettings
 
+# This class is used to validate/setup the environment variables
+# It uses the .env file for the actual variable values
+# NOTE: will need to hide the .env in prod
 class Settings(BaseSettings):
     DATABASE_URL: str
     MONGO_INITDB_DATABASE: str

@@ -1,3 +1,5 @@
+# Endpoints are used from the mongodb with fastapi example here:
+# https://www.mongodb.com/developer/languages/python/python-quickstart-fastapi/
 from fastapi import FastAPI, Body, HTTPException, status
 from fastapi.responses import Response, JSONResponse
 from fastapi.encoders import jsonable_encoder

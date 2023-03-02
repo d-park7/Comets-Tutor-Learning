@@ -1,3 +1,4 @@
+# This file creates all of our schemas for mongodb
 from pydantic import BaseModel, Field, EmailStr
 from datetime import datetime
 from bson import ObjectId
@@ -16,6 +17,10 @@ class UserBaseSchema(BaseModel):
         orm_mode = True
 
         
+# MongoDB stores data as BSON. FastAPI encodes and decodes data as JSON strings.
+# BSON has support for additional non-JSON-native data types, including ObjectId 
+# which can't be directly encoded as JSON. Because of this, we convert ObjectIds 
+# to strings before storing them as the _id.
 class PyObjectId(ObjectId):
     @classmethod
     def __get_validators__(cls):
