@@ -1,3 +1,3 @@
 # add ignores like vscode files and js dependencies
 
-/__pycache__/*
+api/__pycache__/*
