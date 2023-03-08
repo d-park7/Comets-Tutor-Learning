@@ -1,4 +1,4 @@
-name: test
+name: comets_tutor_learning
 channels:
   - defaults
   - conda-forge
