@@ -178,6 +178,8 @@ async def delete_appointment(id: str):
 from fastapi import Depends, FastAPI
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
+# this is where the authorize button came from
+# tokenUrl should match the path for login()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
