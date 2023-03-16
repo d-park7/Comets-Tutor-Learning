@@ -2,18 +2,21 @@ from fastapi import APIRouter, Body, status, HTTPException
 from fastapi.responses import JSONResponse, Response
 from fastapi.encoders import jsonable_encoder
 from typing import List
+from passlib.context import CryptContext
 
-
-from api.schemas import Tutor, UpdateTutorModel
+from api.schemas import Tutor, UpdateTutorModel, TutorInDB
 from api.database import db
+from .auth import get_password_hash
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 router = APIRouter()
 
-# # Tutor crud ops
-@router.post("/create_tutor", response_description="Add new tutors", response_model=Tutor)
-async def create_tutor(tutor: Tutor = Body(...)):
+# Tutor crud ops
+@router.post("/create_tutor", response_description="Add new tutors", response_model=TutorInDB)
+async def create_tutor(tutor: TutorInDB = Body(...)):
     tutor = jsonable_encoder(tutor)
+    tutor["hashed_password"] = get_password_hash(tutor["hashed_password"])
     new_tutor = await db["tutors"].insert_one(tutor)
     created_tutor = await db["tutors"].find_one({"_id": new_tutor.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_tutor)
