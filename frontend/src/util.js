@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 (function ($) {
 
 	/**
@@ -470,4 +472,4 @@
 				}
 		});
 	};
-})(jQuery);
+})($);

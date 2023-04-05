@@ -3,6 +3,10 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+import '../src/assets/css/main.css';
+import breakpoints from 'breakpoints-js';
+import $ from 'jquery';
+import '../src/util.js';
 
 (function ($) {
 
@@ -24,7 +28,6 @@
 			$body.removeClass('is-preload');
 		}, 100);
 	});
-
 	// Scrolly.
 	$('#nav a, .scrolly').scrolly({
 		speed: 1000,
@@ -32,4 +35,4 @@
 			return $nav.height();
 		}
 	});
-})(jQuery);
+})($);
