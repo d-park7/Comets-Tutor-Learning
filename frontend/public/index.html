@@ -11,32 +11,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../src/assets/css/main.css" />
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
-		<script src="https://cdn.jsdelivr.net/npm/breakpoints-js@1.0.0/dist/breakpoints.min.js"></script>
-		<script src="../src/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("button").click(function(){
-					alert("jQuery is working perfectly.");
-				});      
-			});
-			</script>
 	</head>
 	<body class="is-preload">
-		<button type="button">test</button>
+
+		<nav id="navigation"></nav>
 
 		<!-- Nav -->
 			<nav id="nav">
-				<ul class="container">
-					<li><a href="#top">Tutors</a></li>
-					<li><a href="#work">About Us</a></li>
-					<li><a href="#portfolio">Appointments</a></li>
-					<li>
-						<form class="search" type="search" placeholder="Search">
-							<input type="search" class="search-bar" placeholder="Search" aria-label="Search">
-							<button class="button" type="submit">Search</button>
-						</form>
-					</li>
+				<ul class="container" >
+					<li><a href="#aboutUs">About Us</a></li>
+					<li><a href="#tutorsPort">Tutors</a></li>
+					<li><a href="#studentPort">Students</a></li>
+					<li><a>Login</a>
 				</ul>
 			</nav>
 
@@ -45,59 +31,20 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-4 col-5-large col-12-medium">
-							<span class="image fit"><img src="../images/CometsTutorLogo.jpg" alt="Team Logo" /></span>
+							<span class="image fit"><img src="images/CometsTutorLogo.jpg" alt="Team Logo" /></span>
 						</div>
 						<div class="col-8 col-7-large col-12-medium">
 							<header>
 								<h1>Hi. We are <strong>Group 3</strong>.</h1>
 							</header>
-							<!--<p>And this is <strong>Miniport</strong>, a free, fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a> &amp; released under the <a href="http://html5up.net/license">CCA license</a>.</p>
-							<a href="#work" class="button large scrolly">Learn about what I do</a>-->
+							
 						</div>
 					</div>
 				</div>
 			</article>
-
-		<!-- Empty Template 
-			<article id="work" class="wrapper style2">
-				<div class="container">
-					<header>
-						<h2>Here's all the stuff I do.</h2>
-						<p>Odio turpis amet sed consequat eget posuere consequat.</p>
-					</header>
-					<div class="row aln-center">
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fa-comments"></span>
-								<h3>Consequat lorem</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon solid featured fa-camera-retro"></span>
-								<h3>Lorem dolor tempus</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fa-thumbs-up"></span>
-								<h3>Feugiat posuere</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
-							</section>
-						</div>
-					</div>
-					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<a href="#portfolio" class="button large scrolly">See some of my recent work</a>
-					</footer>
-				</div>
-			</article>
-		-->
 
 		<!-- Tutor Listing -->
-			<article id="portfolio" class="wrapper style3">
+			<article id="tutorsPort" class="wrapper style3">
 				<div class="container">
 					<header>
 						<h2>Here’s some of our tutors.</h2>
@@ -105,32 +52,32 @@
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/cathit.gif" alt="" /></a>
-								<h3><a href="#">STEM Cat</a></h3>
+								<a class="image featured"><img src="images/cathit.gif" alt="" /></a>
+								<h3>STEM Cat</h3>
 								<p>Math, Science</p>
 								<p>About me: I am a cat, my head hurts.</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/amongus.png" alt="" /></a>
-								<h3><a href="#">Amongus</a></h3>
+								<a class="image featured"><img src="images/amongus.png" alt="" /></a>
+								<h3>Amongus</h3>
 								<p>Organic Chemistry, Physical Chemistry, Psychology, Sussology, Instrumental Analysis</p>
 								<p>About me: It was green.</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/dancing-lizard-lizard.gif" alt="" /></a>
-								<h3><a href="#">Geico</a></h3>
+								<a class="image featured"><img src="images/dancing-lizard-lizard.gif" alt="" /></a>
+								<h3>Geico</h3>
 								<p>Ripping off students</p>
 								<p>About me: Switching to GEICO can save 15% on your car insurance.</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/sus.png" alt="" /></a>
-								<h3><a href="#">Pepe</a></h3>
+								<a class="image featured"><img src="images/sus.png" alt="" /></a>
+								<h3>Pepe</h3>
 								<p>Physics</p>
 								<p>About me: Physics may not actually be real</p>
 							</article>
@@ -139,46 +86,40 @@
 						
 					</div>
 					<footer>
-						
 						<a href="#contact" class="button large scrolly">View other tutors</a>
 					</footer>
 				</div>
 			</article>
 
-		<!-- Blank template -->
+			<!-- Students -->
+			<article id="studentPort" class="wrapper style2">
+				<div class="container">
+					<div class="row aln-center">
+						<img class="image left" style="width:25em; height:25em;" src="images/test.png" alt="" /></a>
+						<div class="col-4 col-6-medium col-12-small">
+							<section class="box style1">
+								<p>Who can be a student?</p>
+								<p>Anyone from Kindergarten through High School</p>								
+							</section>
+						</div>
+					</div>
+				</div>
+			</article>
+		
+
+		<!-- About Us -->
+			<article id="aboutUs" class="wrapper style3">
+				<div class="container">
+					<p><b>This is a website for any student grades K-12 to connect to a UTD tutor for free.</b></p>
+					<p><b>All tutors are verified to be currently or have been a UTD student.</b></p>
+					<p><b>Any student will be able to find tutors for specific subjects and schedule an appointment with them.</b></p>
+				</div>
+			</article>
+			
+
+			
 			<article id="contact" class="wrapper style4">
 				<div class="container medium">
-					<!--
-					<header>
-						<h2>Have me make stuff for you.</h2>
-						<p>Ornare nulla proin odio consequat sapien vestibulum ipsum.</p>
-					</header>
-					<div class="row">
-						<div class="col-12">
-							<form method="post" action="#">
-								<div class="row">
-									<div class="col-6 col-12-small">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="text" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<input type="text" name="subject" id="subject" placeholder="Subject" />
-									</div>
-									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" /></li>
-											<li><input type="reset" value="Clear Form" class="alt" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</div> 
-					-->
 					<footer>	
 						<div class="col-12">
 							<hr />
@@ -190,17 +131,6 @@
 								<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
 								<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
 								<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<!--
-								<li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-								<li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-								<li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-								<li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-								<li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-								<li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-								<li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li>
-								-->
 							</ul>
 							<ul class="contact">
 								<li><h4>UTD Phone: 972-883-2111</h4></li>

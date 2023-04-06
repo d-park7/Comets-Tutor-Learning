@@ -7,12 +7,15 @@ import '../src/assets/css/main.css';
 import breakpoints from 'breakpoints-js';
 import $ from 'jquery';
 import '../src/util.js';
+import React from 'react';
+
 
 (function ($) {
+	
 
 	var $window = $(window),
-	    $body = $('body'),
-	    $nav = $('#nav');
+	    $body = $('body');
+	    // $nav = $('#nav'); // Used by scrolly, but most likely taking out scrolly
 
 	// Breakpoints.
 	breakpoints({
@@ -28,11 +31,16 @@ import '../src/util.js';
 			$body.removeClass('is-preload');
 		}, 100);
 	});
+
+	// commenting out cause not sure what scrolly does
+	// and node doesn't know what this function is
+	// UPDATE: It might just be for different scrolling speeds
 	// Scrolly.
-	$('#nav a, .scrolly').scrolly({
-		speed: 1000,
-		offset: function offset() {
-			return $nav.height();
-		}
-	});
+	// $('#nav a, .scrolly').scrolly({
+	// 	speed: 1000,
+	// 	offset: function offset() {
+	// 		return $nav.height();
+	// 	}
+	// });
+	
 })($);
