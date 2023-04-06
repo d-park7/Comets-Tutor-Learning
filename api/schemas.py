@@ -61,8 +61,8 @@ class Student(BaseModel):
     email: str
     name: str = Field(...)
     date_of_birth: date = Field(...)
-    availability_days: list # list will be day:time (Monday:5pm), 5pm assuming 5-6pm
     favorites: str
+    total_time: int
     
     class Config:
         json_encoders = {ObjectId: str}
@@ -76,8 +76,8 @@ class UpdateStudentModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
-    availability_days: Optional[list]
     favorites: Optional[str]
+    total_time: Optional[str]
 
     class Config:
         json_encoders = {ObjectId: str}
