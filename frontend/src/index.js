@@ -4,33 +4,48 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 import '../src/assets/css/main.css';
-import breakpoints from 'breakpoints-js';
-import $ from 'jquery';
 import '../src/util.js';
 import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './App';
 
 
-(function ($) {
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+
+
+
+//const root = ReactDOM.createRoot(document.getElementById('root'));
+//root.render(<homePage />);
+
+// 
+
+
+// jquery code
+// (function ($) {
 	
 
-	var $window = $(window),
-	    $body = $('body');
+	// var $window = $(window),
+	//     $body = $('body');
 	    // $nav = $('#nav'); // Used by scrolly, but most likely taking out scrolly
 
 	// Breakpoints.
-	breakpoints({
-		xlarge: ['1281px', '1680px'],
-		large: ['981px', '1280px'],
-		medium: ['737px', '980px'],
-		small: [null, '736px']
-	});
+	// breakpoints({
+	// 	xlarge: ['1281px', '1680px'],
+	// 	large: ['981px', '1280px'],
+	// 	medium: ['737px', '980px'],
+	// 	small: [null, '736px']
+	// });
 
 	// Play initial animations on page load.
-	$window.on('load', function () {
-		window.setTimeout(function () {
-			$body.removeClass('is-preload');
-		}, 100);
-	});
+	// $window.on('load', function () {
+	// 	window.setTimeout(function () {
+	// 		$body.removeClass('is-preload');
+	// 	}, 100);
+	// });
 
 	// commenting out cause not sure what scrolly does
 	// and node doesn't know what this function is
@@ -43,4 +58,4 @@ import React from 'react';
 	// 	}
 	// });
 	
-})($);
+// })($);
