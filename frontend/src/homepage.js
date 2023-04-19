@@ -1,10 +1,17 @@
 import '../src/assets/css/main.css';
 import '../src/util.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
+import Student from "./models"
+
+import student1 from "./db.json";
+import student2 from "./students.json"
 
 // function Navbar() {
-//	return (
+// 	return (
 // 		<nav id="nav">
 // 			<ul class="container" >
 // 				<li><a href="#aboutUs"> <Link to ="/">About Us</Link></a></li>
@@ -15,6 +22,48 @@ import React from 'react';
 // 		</nav>
 // 	)
 // }
+
+
+
+// function renderStudent(student, index) {
+// 	return (
+// 		<tr key={index}>
+// 			<td>{student.id}</td>
+// 			<td>{student.email}</td>
+// 			<td>{student.name}</td>
+// 			<td>{student.date_of_birth}</td>
+// 			<td>{student.total_time}</td>
+// 			<td>{student.hashed_password}</td>
+// 			<td>{student.favorites}</td>
+// 		</tr>
+// 	)
+// }
+
+
+function BasicExample() {
+	const data = student2
+	//student1 = new Student(student1.id, student1.email, student1.name, student1.date_of_birth, student1.total_time, student1.hashed_password, student1.favorites)
+	return (
+		
+	  <Table responsive striped bordered hover>
+		<thead>
+		  <tr>
+			<th>ID</th>
+			<th>Email</th>
+			<th>Date of Birth</th>
+			<th>Total Time</th>
+			<th>Hashed Password</th>
+			<th>Favorites</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{data.map(eachone => {return <tr><td>{eachone._id}</td><td>{eachone.email}</td><td>{eachone.date_of_birth}</td><td>{eachone.total_time}</td><td>{eachone.hashed_password}</td><td>{eachone.favorites}</td></tr>})}
+			{/* {student1.map((student1) => renderStudent)}  */}
+		</tbody>
+	  </Table>
+	);
+  }
+  
 
 class HomePage extends React.Component {
 	render () {
@@ -37,6 +86,8 @@ class HomePage extends React.Component {
 			</article>
 		{/* <!-- Tutor Listing --> */}
 		 	<article id="tutorsPort" class="wrapper style3">
+			<BasicExample/>
+			{console.log(Object.entries(student1))}
 		 		<div class="container">
 		 			<header>
 		 				<h2>Here’s some of our tutors.</h2>
