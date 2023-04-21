@@ -1,11 +1,14 @@
 import '../src/assets/css/main.css';
-import '../src/util.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-
+//import {BrowserRouter as Routes, Route} from "react-router-dom";
+import {Routes , Route } from "react-router-dom" 
 import Student from "./models"
+
+import LoginTest from './login';
 
 import student1 from "./db.json";
 import student2 from "./students.json"
@@ -14,16 +17,18 @@ import student2 from "./students.json"
 // 	return (
 // 		<nav id="nav">
 // 			<ul class="container" >
-// 				<li><a href="#aboutUs"> <Link to ="/">About Us</Link></a></li>
-// 				<li><a href="#tutorsPort">Tutors</a></li>
-// 				<li><a href="#studentPort">Students</a></li>
-// 				<li><a><Link to ="/login">Login</Link></a></li>
+// 				<Routes>
+// 					<li><a href="#aboutUs">About Us</a></li>
+// 					<li><a href="#tutorsPort">Tutors</a></li>
+// 					<li><a href="#studentPort">Students</a></li>
+// 					<li><a href="#studentPort">Login</a></li>
+// 				</Routes>
 // 			</ul>
 // 		</nav>
-// 	)
+// 	);
 // }
 
-
+// <Link to="/about">About</Link>
 
 // function renderStudent(student, index) {
 // 	return (
