@@ -3,19 +3,28 @@ import React from 'react';
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import HomePage from './homepage.js';
+import HomePageApp from './HomePageRouter.js';
 import Navbar from './navbar';
 import LoginTest from './login';
+import StudentHomepage from './StudentHome';
+import StudentPage from './studentpage';
+import ProfileTest from './EditProfile';
+import StudentAppointment from './StudentAppt';
 
+import NavbarStudent from './navbarstudent';
 
 function App() {
     return (
         <BrowserRouter>        
-            <Navbar/>
+            {/* <Navbar/> */}
             <Routes>
-                {/* <HomePage /> {/* comment out to switch pages*/ } 
-                <Route exact path="/login" element={<LoginTest />}></Route>
-                <Route exact path="/" element={<HomePage />}></Route>
-                {/* <Route exact path="/About" element={<LoginTest />}></Route> */}
+
+                <Route exact path="/student/" element={<StudentPage />}></Route>
+                <Route exact path="/student/editprofile" element={<ProfileTest/>}></Route>
+                <Route exact path="/student/appointments" element={<StudentAppointment/>}></Route>
+                <Route exact path="/login/" element={<LoginTest />}></Route>
+                <Route exact path="/" element={<HomePageApp />}></Route>
+
             </Routes>
         </BrowserRouter>
     )
@@ -23,3 +32,4 @@ function App() {
 
 
 export default App;
+
