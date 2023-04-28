@@ -4,17 +4,10 @@ import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import NavbarStudent from './navbarstudent';
 import StudentHomepage from './StudentHome';
-import EditProfile from './EditProfile';
+import EditProfileStudent from './EditProfileStudent';
 
 function StudentPage() {
     return (
-        // <BrowserRouter>        
-        //     <Routes>
-        //         <Route exact path="/" element={<StudentHomepage />}></Route>
-        //         <Route exact path="/profile" element={<EditProfile />}></Route>
-        
-        //     </Routes>
-        // </BrowserRouter>
         <div>
             <NavbarStudent/>
             <StudentHomepage/>

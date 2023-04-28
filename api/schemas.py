@@ -33,7 +33,6 @@ class Tutor(BaseModel):
     name: str
     date_of_birth: date
     subject: str
-    availability_days: list
     total_time: int
     
     class Config:
@@ -48,7 +47,6 @@ class UpdateTutorModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
-    availability_days: Optional[list]
     subject: Optional[str]
     total_time: Optional[str]
 

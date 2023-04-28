@@ -47,6 +47,9 @@ import student2 from "./students.json"
 
 function BasicExample() {
 	const data = student2
+
+	
+
 	//student1 = new Student(student1.id, student1.email, student1.name, student1.date_of_birth, student1.total_time, student1.hashed_password, student1.favorites)
 	return (
 		

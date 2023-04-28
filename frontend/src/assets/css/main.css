@@ -239,6 +239,7 @@ input, select, textarea {
 			width: 900px;
 		}
 
+
 		@media screen and (max-width: 1680px) {
 
 			.container {
@@ -287,6 +288,8 @@ input, select, textarea {
 				}
 
 		}
+
+	
 
 /* Row */
 
@@ -1512,9 +1515,63 @@ input, select, textarea {
 		}
 
 /* Form */
+	/* UTD Green #154734
+	UTD Orange #e87500 */
+	
+	.form-box {
+		min-width: 15%;
+		width: 50%;
+		height: 100vh;
+		border: 1px solid red;
+		margin: 0vw;
+		padding: 2vw;
+		position: relative;
+		/* position:relative for .prevBtn and .nextBtn position:absolute; */
+	  }
+	
+	.form-box  label {
+		display: block;
+		text-align: center;
+		font-size: 40px;
+		margin-top: 1vh;
+		margin-bottom: 4vh;
+	  }
+	  
+	.form-box input{
+		display: block;
+		width: 30%;
+		padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+		margin: 0.9vw 0;
+		border: 0;
+		border-radius: 5px;
+		font-size: 20px;
+		color: black;
+		
+	}
+
+	.form-box button {
+		display: inline-block;
+		width: 20%;
+		height: 2rem;
+		color: gray;
+		background-color: #154734;
+		border: none;
+		bottom: 0;
+		cursor: pointer;
+		font-size: 115%;
+		border-radius: 10px 10px 10px 10px;
+		padding-top: 0px;
+		padding: 0px;
+		text-anchor: middle;
+	}
+
+	.form-box button:hover {
+		background-color: #e87500;
+		transition: 1s background ease;
+	}
 
 	form label {
-		color: #3e3e3e;
+		color: #2c2c2c;
 		font-weight: 700;
 		display: block;
 		margin: 0 0 0.5em 0;
@@ -1537,7 +1594,7 @@ input, select, textarea {
 		border-radius: 8px;
 		border: solid 1px #ddd;
 		background: #fff;
-		color: #bbb;
+		color: #000000;
 		box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.05), 0px 1px 0px 0px rgba(255, 255, 255, 0.025);
 		width: 100%;
 	}
@@ -1560,19 +1617,19 @@ input, select, textarea {
 	}
 
 	form ::-webkit-input-placeholder {
-		color: #555 !important;
+		color: #000000 !important;
 	}
 
 	form :-moz-placeholder {
-		color: #555 !important;
+		color: #000000 !important;
 	}
 
 	form ::-moz-placeholder {
-		color: #555 !important;
+		color: rgb(0, 0, 0) !important;
 	}
 
 	form :-ms-input-placeholder {
-		color: #555 !important;
+		color: #000000 !important;
 	}
 
 	form ::-moz-focus-inner {

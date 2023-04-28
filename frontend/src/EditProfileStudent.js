@@ -4,13 +4,13 @@ import React from 'react';
 
 import NavbarStudent from './navbarstudent';
 
-function ProfileTest() { 
+function ProfileTestStudent() { 
     return ( 
        <div> 
         
           <NavbarStudent />
-            <h1> This is the profile edit page </h1> 
+            <h1> This is the student profile edit page </h1> 
       </div> 
     ); 
 } 
-export default ProfileTest;
+export default ProfileTestStudent;
