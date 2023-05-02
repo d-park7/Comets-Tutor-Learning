@@ -26,24 +26,26 @@ def get_password_hash(password):
 
 async def get_user(db, email: str):
     if (student := await db["students"].find_one({"email": email})) is not None:
-        return student
+        return student, 0
     elif (tutor := await db["tutors"].find_one({"email": email})) is not None:
-        return tutor
+        return tutor, 1
 
 async def authenticate_user(db, email: str, password: str):
-    user = await get_user(db, email)
+    user, account = await get_user(db, email)
     if not user:
-        return False
+        return False, account
     if verify_password(password, user["hashed_password"]):
-        return user
+        return user, account
 
 @router.post("/token")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = await authenticate_user(db, form_data.username, form_data.password)
+    user, account = await authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(status_code=404, detail=f"Incorrect username or password")
     
-    return {"access_token": user["name"], "token_type": "bearer"}
+    # Base 
+
+    return {"access_token": user["name"], "token_type": "bearer", "user": account}
 
 
 @router.get("/users/me")

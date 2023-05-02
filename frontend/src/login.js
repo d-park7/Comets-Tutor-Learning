@@ -16,15 +16,21 @@ import student2 from "./students.json"
 
   const LoginTest = () => {
     // const [error, setError] = useState({ email: '', password: '', fullName: '' });
-    // const [registerForm, setRegisterForm] = useState({ email: '', password: '', fullName: "" });  // 1
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // const [loading, setLoading] = useState(false)
+
+
+    const [conditions, setConditions] = useState({status: 404, accountType: 2});
+
+
+
+    // const [state, updateState] = useReducer(
+    //   (state, updates) => ({ ...state, ...updates }),
+    //   initialState
+    // );
     const navigate = useNavigate()  // 2
 
-    // const onRegister = (e) => {
-    //   e.preventDefault();
     //   setLoading(true)
     //   setError(false);
       
@@ -61,15 +67,22 @@ import student2 from "./students.json"
             //headers: { 'content-type': 'application/x-www-form-urlencoded'},
             //data: qs.stringify(data)
           )
-          // .then(function (response) {
-          //   console.log(response.data.token, "response.data.token");
-          //   if (response.data.token) {
-          //     setToken(response.data.token);
-          //   }
-          // })
-          // .catch(function (error) {
-          //   console.log(error, "error");
-          // });
+          .then(function (response) {
+            console.log(response.data)
+
+            if (response.status == 200) {
+              if (response.data.user == 1) {
+                navigate("/tutor")
+              } else if (response.data.user == 0) {
+                navigate("/student")
+              }
+            }
+              
+          })
+          .catch(function (response) {
+            alert()
+          })
+          
         }
     }
 
@@ -116,5 +129,4 @@ import student2 from "./students.json"
 
       ); 
   } 
-
 export default LoginTest;
