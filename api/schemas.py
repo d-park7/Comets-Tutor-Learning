@@ -1,5 +1,5 @@
 # This file creates all of our schemas for mongodb
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr 
 from typing import Optional
 from datetime import time, date
 from bson import ObjectId
@@ -27,7 +27,7 @@ class PyObjectId(ObjectId):
 
 class Tutor(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    profile_pic: str
+    profile_pic: Optional[str]
     about_me: str
     email: str = Field(...)
     name: str
