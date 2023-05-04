@@ -3,13 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 
 import NavbarTutor from './NavbarTutor';
-import config from './config';
-import FastAPIClient from './client';
-import { json } from 'react-router-dom';
 import axios from 'axios';
 
-
-const client = new FastAPIClient(config)
 
 
 function ProfileTestTutor() {
@@ -65,11 +60,8 @@ function ProfileTestTutor() {
       })
   };
 
-  useEffect(() => {
-    
-  })
 
-  
+
 
   // window.history.pushState(() => {
   //   getTutor
@@ -83,12 +75,12 @@ function ProfileTestTutor() {
     alert(`The name is: ${tutor.name}`)
   }
 
-  window.onloadstart = getTutor;
+  // window.onloadstart = getTutor;
 
   return (
     <div>
       <NavbarTutor />
-      
+
       {/* <h1> This is the Tutor profile edit page </h1> */}
       {/* <body onLoad={getTutor} /> */}
       <div class="container">
@@ -97,7 +89,7 @@ function ProfileTestTutor() {
             <div class="col-4 col-6-medium col-12-small">
               <article class="box style2">
                 <p>{tutor.profile_pic}</p>
-                <a class="image featured"><img src="images\cathit.gif" alt="" /></a>
+                <a class="image featured"><img src="/images\cathit.gif" alt="" /></a>
                 <h3>{tutor.name}</h3>
                 <p>{tutor.email}</p>
                 <p>{tutor.subject}</p>
@@ -155,8 +147,34 @@ function ProfileTestTutor() {
           </div>
         </div>
       </div>
-      {/* <button onClick={getTutor}>Click here for tutor</button> */}
-      {/* {JSON.stringify({...tutor})} */}
+      <article id="contact" class="wrapper style4">
+        <div class="container medium">
+          <div class="col-12">
+            <hr />
+            <h3>Find us on ...</h3>
+            <ul class="social">
+              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+              <li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+              <li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+              <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            </ul>
+            <ul class="contact">
+              <li><h4>UTD Phone: 972-883-2111</h4></li>
+              <li><h4>The University of Texas at Dallas </h4></li>
+              <li><h4>800 W. Campbell Road, </h4></li>
+              <li><h4>Richardson, Texas 75080-3021</h4></li>
+            </ul>
+            <hr />
+          </div>
+          <ul id="copyright">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </article>
+
+
     </div >
   );
 }
