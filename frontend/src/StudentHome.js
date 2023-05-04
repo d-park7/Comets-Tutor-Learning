@@ -33,7 +33,7 @@ const StudentHomepage = () => {
         onProfilePageViewed: () => console.log("onProfilePageViewed"),
         onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
         onEventTypeViewed: () => console.log("onEventTypeViewed"),
-        onEventScheduled: (e) => {if (e != null){console.log(e.data.payload)}},
+        onEventScheduled: (e) => {if (e != null){console.log(e.data)}},
     });
 
     return(

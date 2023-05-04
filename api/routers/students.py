@@ -32,6 +32,7 @@ async def list_students():
 @router.get("/student/{id}", response_description="Get a single student", response_model=Student)
 async def show_student(id: str):
     if (student := await db["students"].find_one({"_id": id})) is not None:
+        # db
         return student
 
     raise HTTPException(status_code=404, detail=f"Student {id} not found line 39")

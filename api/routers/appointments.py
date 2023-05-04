@@ -12,6 +12,7 @@ router =  APIRouter()
 
 
 
+
 @router.post("/createappointment", response_description="Add new appointment", response_model=Appointment)
 async def create_appointment(appointment: Appointment = Body(...)):
     appointment = jsonable_encoder(appointment)
