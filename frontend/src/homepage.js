@@ -103,7 +103,7 @@ class HomePage extends React.Component {
 		 			<div class="row">
 		 				<div class="col-4 col-6-medium col-12-small">
 		 					<article class="box style2">
-		 						<a class="image featured"><img src="images/cathit.gif" alt="" /></a>
+							 <a class="image featured"><img src="images/pic00.jpg" alt="" /></a>
 		 						<h3>STEM Cat</h3>
 		 						<p>Math, Science</p>
 		 						<p>About me: I am a cat, my head hurts.</p>
