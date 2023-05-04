@@ -61,7 +61,7 @@ class Student(BaseModel):
     email: str
     name: str = Field(...)
     date_of_birth: date = Field(...)
-    favorites: str
+    favorites: list(str)
     total_time: int
     
     class Config:
