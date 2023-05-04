@@ -1,6 +1,7 @@
 import '../src/assets/css/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './navbar';
 
@@ -11,13 +12,12 @@ import Navbar from './navbar';
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
-    
-    // LOGIN TEST (dev.to)
+    const navigate = useNavigate()
+
     const signup = () => {
       if ((name == "") & (password == "") & (email == "") & (dateOfBirth == "")) {
         return;
       } else {
-        const form = new FormData();
         const student = {
             "profile_pic": "",
             "email": email,
@@ -34,9 +34,8 @@ import Navbar from './navbar';
           .then(function (response) {
             console.log(response.data)
 
-            if (response.status == 200) {
-              if (response.data.user == 1) {
-              }
+            if (response.status == 201) {
+                navigate("/student")
             }
               
           })
