@@ -16,6 +16,7 @@ import TutorPage from './TutorPage';
 
 
 import NavbarStudent from './navbarstudent';
+import StudentSignup from './StudentSignup';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
             <Routes>
                 <Route exact path="/tutor/" element={<TutorPage />}></Route>
                 <Route exact path="/tutor/editprofile" element={<ProfileTestTutor/>}></Route>
+                <Route exact path="/studentsignup" element={<StudentSignup/>}></Route>
                 <Route exact path="/student/" element={<StudentPage />}></Route>
                 <Route exact path="/student/editprofile" element={<ProfileTestStudent/>}></Route>
                 <Route exact path="/student/appointments" element={<StudentAppointment/>}></Route>
