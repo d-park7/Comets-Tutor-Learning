@@ -1529,6 +1529,15 @@ input, select, textarea {
 		/* position:relative for .prevBtn and .nextBtn position:absolute; */
 	  }
 	
+	.form-box-2 {
+		min-width: 15%;
+		width: 50%;
+		height: 35vh;
+		margin: 0vw;
+		padding: 2vw;
+		position: relative;
+	}
+
 	.form-box  label {
 		display: block;
 		text-align: center;
