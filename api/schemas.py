@@ -34,6 +34,7 @@ class Tutor(BaseModel):
     date_of_birth: date
     subject: str
     total_time: int
+    calendly_user: str
     
     class Config:
         json_encoders = {ObjectId: str}        
@@ -49,6 +50,7 @@ class UpdateTutorModel(BaseModel):
     date_of_birth: Optional[date]
     subject: Optional[str]
     total_time: Optional[str]
+    calendly_user: Optional[str]
 
     class Config:
         json_encoders = {ObjectId: str}

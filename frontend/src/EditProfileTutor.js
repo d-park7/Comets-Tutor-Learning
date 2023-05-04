@@ -62,12 +62,34 @@ function ProfileTestTutor() {
 
 
 
+  window.onpageshow = getTutor;
 
   // window.history.pushState(() => {
   //   getTutor
   // })
 
-  window.onpageshow = getTutor;
+  setTimeout(() => {
+    axios
+      .get("http://127.0.0.1:8000/tutors/" + id,
+      )
+      .then(function (response) {
+        setTutor({
+          ...tutor,
+          profile_pic: response.data["profile_pic"],
+          name: response.data["name"],
+          about_me: response.data["about_me"],
+          date_of_birth: response.data["date_of_birth"],
+          email: response.data["email"],
+          subject: response.data["subject"]
+        })
+        console.log(response.data)
+      }).catch(function (response) {
+        alert()
+      })
+  }, "3000");
+
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();

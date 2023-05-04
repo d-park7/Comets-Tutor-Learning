@@ -1518,6 +1518,16 @@ input, select, textarea {
 	/* UTD Green #154734
 	UTD Orange #e87500 */
 	
+	.form-app-sign-up
+	{
+		margin-bottom: 20px;
+	}
+	
+	.form-app-sign-up input {
+		padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+		position: inherit;
+	}
+
 	.form-box {
 		min-width: 15%;
 		width: 50%;
