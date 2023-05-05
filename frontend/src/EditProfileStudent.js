@@ -32,7 +32,7 @@ function ProfileTestStudent() {
           console.log(response.data)
         })
         .catch(function(response){
-          alert("ERROR!!")
+          alert("Invalid form entry. Please try again.")
         })
      };
 
@@ -110,18 +110,28 @@ function ProfileTestStudent() {
               <div class="form-box-2">
                 <form className='UpdateForm' onSubmit={handleSubmit}> 
                   <div className='field1'>
-                    <h4>Name: {studentInfo.name}</h4>
+                    <h4>Current Name: {studentInfo.name}</h4>
                       <input 
                         placeholder='New Name'
                         type="text" 
-                        onChange={(e) => setStudentEdit({...studentEdit, name: e.target.value})}
+                        onChange={ function (e) {
+                                    if (e.target.value.match(/^[a-zA-Z]+$/)) {
+                                      return setStudentEdit({...studentEdit, name: e.target.value})
+                                    }
+                                  }
+                        }
                       />
                     <br></br>
-                    <h4>Email: {studentInfo.email}</h4>
+                    <h4>Current Email: {studentInfo.email}</h4>
                       <input 
                         placeholder='New Email'
                         type="text" 
-                        onChange={(e) => setStudentEdit({...studentEdit, email: e.target.value})}
+                        onChange={ function (e) {
+                                    if (e.target.value.match(/(?=.*@)(?=.*\.)^[^ ]+$/)) {
+                                      return setStudentEdit({...studentEdit, email: e.target.value})
+                                    }
+                                  }
+                        }
                       />
                     </div>
                     <br></br>

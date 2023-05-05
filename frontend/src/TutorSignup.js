@@ -6,18 +6,17 @@ import axios from 'axios';
 
 import Navbar from './navbar';
 
-
 function TutorSignup() {
 
     const [newTutor, setNewTutor] = useState({
         profile_pic: '',
         about_me: '',
-        email: '',
-        name: '',
-        date_of_birth: '',
+        email: null,
+        name: null,
+        date_of_birth: null,
         subject: '',
         total_time: 0,
-        hashed_password: '',
+        hashed_password: null,
     });
 
     const [finalTutor, setFinalTutor] = useState({
@@ -44,6 +43,7 @@ function TutorSignup() {
     };
 
     const handleSubmit = (event) => {
+      console.log(event)
       event.preventDefault();
       alert(`You have registered successfully!`)
     }
@@ -56,38 +56,57 @@ function TutorSignup() {
             <form className='TutorSignupForm' onSubmit={handleSubmit}> 
               <label> Tutor Signup Page </label>
                 <div className='field1'>
+                    <p>Email:</p>
                     <input 
-                    placeholder='Email'
                     type="text" 
-                    onChange={(e) => setFinalTutor({...finalTutor, email: e.target.value})}
+                    onChange={ function (e) {
+                                if (e.target.value.match(/(?=.*@)(?=.*\.)^[^ ]+$/)) {
+                                  return setFinalTutor({...finalTutor, email: e.target.value})
+                                }
+                                else {
+                                  return setFinalTutor({...finalTutor, email: null})
+                                }
+                              }
+                    }
                     />
                     <br></br>
+                    <p>Password:</p>
                     <input 
-                    placeholder='Password'
                     type="text" 
-                    onChange={(e) => setFinalTutor({...finalTutor, hashed_password: e.target.value})}
+                    onChange={ function (e) {
+                                if (e.target.value.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^ ]+$/)) {
+                                  if (e.target.value.length >= 8) {
+                                    return setFinalTutor({...finalTutor, hashed_password: e.target.value})
+                                  }
+                                }
+                                else {
+                                  return setFinalTutor({...finalTutor, hashed_password: null})
+                                }
+                              }
+                    }
                     />
+                    <p><i>8 characters long (min.) and contain 1 uppercase, 1 lowercase, and 1 number</i></p>
                     <br></br>
+                    <p>Name: (First and Last)</p>
                     <input 
-                    placeholder='Name (First and Last)'
                     type="text" 
                     onChange={(e) => setFinalTutor({...finalTutor, name: e.target.value})}
                     />
                     <br></br>
+                    <p>Date of birth: (0000-00-00)</p>
                     <input 
-                    placeholder='Date of birth (0000-00-00)'
                     type="text" 
                     onChange={(e) => setFinalTutor({...finalTutor, date_of_birth: e.target.value})}
                     />
                     <br></br>
+                    <p>Subject to tutor: (Optional)</p>
                     <input 
-                    placeholder='Subject Tutor (Optional)'
                     type="text" 
                     onChange={(e) => setFinalTutor({...finalTutor, subject: e.target.value})}
                     />
                     <br></br>
+                    <p>About me: (Optional)</p>
                     <input 
-                    placeholder='About Me (Optional)'
                     type="text" 
                     onChange={(e) => setFinalTutor({...finalTutor, about_me: e.target.value})}
                     />
