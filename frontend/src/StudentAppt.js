@@ -1,6 +1,7 @@
 import "../src/assets/css/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import { AiFillPlusCircle } from "react-icons/ai";
 import Table from "react-bootstrap/Table";
 import FastAPIClient from "./client";
 import config from "./config";
@@ -9,13 +10,18 @@ import { PopupButton } from "react-calendly";
 
 
 import NavbarStudent from "./navbarstudent";
+import { Button } from "bootstrap";
 
 const client = new FastAPIClient(config);
 
 function StudentAppointment() {
 
+  const id = localStorage.getItem("token");
+  let name = "";
   const [tutorList, setTutorList] = useState([]);
   const [filterText, setFilterText] = useState("");
+  const [favoriteTutors, setFavorites] = useState([]);
+  const [tutorName, setTutorName] = useState("");
 
   const getTutor = (e) => {
     e.preventDefault();
@@ -28,13 +34,62 @@ function StudentAppointment() {
       }).catch(function (response) {
         alert()
       })
+    axios
+      .get("http://127.0.0.1:8000/student/" + id,
+      ).then(function (response) {
+        setFavorites(response.data["favorites"])
+        // console.log(response.data["favorites"])
+      }).then((function () {
+        console.log(...favoriteTutors)
+      }))
+      .catch(function (response) {
+        alert()
+      })
   };
+
+  setTimeout(() => {
+    axios
+      .get("http://127.0.0.1:8000/student/" + id,
+      ).then(function (response) {
+        setFavorites(response.data["favorites"])
+      })
+      .catch(function (response) {
+        alert()
+      })
+  }, "5000");
+
+
+  function submitClick(value) {
+    axios
+      .get("http://127.0.0.1:8000/student/" + id,
+      ).then(function (response) {
+         setFavorites(response.data["favorites"])
+      })
+      .catch(function (response) {
+        alert()
+      }).then(()=>{
+        if(favoriteTutors.includes(value))
+        {
+          alert("Tutor is already a favorite one")
+        }
+        else {
+          favoriteTutors.push(value)
+          axios.put("http://127.0.0.1:8000/updatestudent/"+id,{
+            favorites: favoriteTutors
+          }).then(function (response) {
+            console.log(response.data)
+          }).catch(function (response) {
+            alert()
+          })
+        }
+      })
+
+  }
 
   window.onpageshow = getTutor;
 
 
   const filterButton = (e) => {
-    // console.log(id);
     e.preventDefault();
     axios
       .get("http://127.0.0.1:8000/tutors",
@@ -47,10 +102,7 @@ function StudentAppointment() {
       }).catch(function (response) {
         alert()
       })
-      // setTutorList(tutorList.filter((each) =>
-      // {return each.name.includes(filterText)}
-      // ))
-      console.log({tutorList})
+    console.log({ tutorList })
   };
 
   return (
@@ -84,6 +136,7 @@ function StudentAppointment() {
             <th>Email</th>
             <th>Subject</th>
             <th>Create Appointment</th>
+            <th>Add To Favorites</th>
           </tr>
         </thead>
         <tbody>
@@ -96,11 +149,20 @@ function StudentAppointment() {
                 <td>{eachone.subject}</td>
                 <td>
                   <PopupButton
-                    url= {"https://calendly.com/"+eachone.calendly_user}
+                    url={"https://calendly.com/" + eachone.calendly_user}
                     // url="https://calendly.com/"+{eachone.calendly_user}
                     rootElement={document.getElementById("root")}
                     text="Click here to schedule!"
                   />
+                </td>
+                <td>
+                  <AiFillPlusCircle
+                    onClick={() =>
+                      submitClick(eachone.name)
+                    }
+                  />
+                  {/* <button onClick={setTutorName(eachone.name)}>
+                  </button> */}
                 </td>
               </tr>
             );

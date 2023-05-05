@@ -61,11 +61,12 @@ class Student(BaseModel):
     email: str
     name: str = Field(...)
     date_of_birth: date = Field(...)
-    favorites: list(str)
+    favorites: list
     total_time: int
     
     class Config:
         json_encoders = {ObjectId: str}
+
 
 class StudentInDB(Student):
     hashed_password: str
@@ -76,7 +77,7 @@ class UpdateStudentModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
-    favorites: Optional[str]
+    favorites: Optional[list]
     total_time: Optional[str]
 
     class Config:
