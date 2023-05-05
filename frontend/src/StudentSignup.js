@@ -82,7 +82,7 @@ import Navbar from './navbar';
                     placeholder='Email'
                     type="text" 
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.toLocaleLowerCase())}
                     />
                   <input 
                     placeholder='Date of Birth'

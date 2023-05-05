@@ -125,8 +125,8 @@ const TutorHomePage = () => {
                 <div class="row">
                     <div class="col-4 col-6-medium col-12-small">
                         <article class="box style2">
-                            <a class="image featured"><img src="/images/cathit.gif" width={60} alt="" /></a>
-                            <p>{tutor.profile_pic}</p>
+                            <a class="image featured"><img src={ tutor.profile_pic } width={60} alt="" /></a>
+                            {/* <p>{tutor.profile_pic}</p> */}
                             {/* <a class="image featured"><img src="images\cathit.gif" alt="" /></a> */}
                             <h3>{tutor.name}</h3>
                             <p>{tutor.email}</p>

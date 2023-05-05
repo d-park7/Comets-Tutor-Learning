@@ -1,6 +1,8 @@
 import '../src/assets/css/main.css';
+import '../src/assets/css/studentsignup.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
+import {MultiSelect} from "react-multi-select-component";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -18,6 +20,7 @@ function TutorSignup() {
         total_time: 0,
         hashed_password: null,
         calendly_user: null,
+        available_times: [],
     });
 
     const [finalTutor, setFinalTutor] = useState({
@@ -135,6 +138,52 @@ function TutorSignup() {
                       type="text" 
                       onChange={(e) => setFinalTutor({...finalTutor, about_me: e.target.value})}
                     />
+                    <br></br>
+
+                    <h1>Select your profile picture</h1>
+                    <div class="cc-selector">
+                      <input 
+                        id="amongus" 
+                        type="radio" 
+                        name="profilepic"
+                        value="images/amongus.png" 
+                        onClick={(e) => setFinalTutor({...finalTutor, profile_pic: "images/amongus.png"})}
+                        />
+                      <label class="drinkcard-cc amongus" for="amongus"></label>
+                      <input 
+                        id="cathit" 
+                        type="radio"
+                        name="profilepic"
+                        value="images/cathit.gif" 
+                        onClick={(e) => setFinalTutor({...finalTutor, profile_pic: "images/cathit.gif"})}
+                        />
+                      <label class="drinkcard-cc cathit" for="cathit"></label>
+                      <input 
+                        id="dancinglizard" 
+                        type="radio"
+                        name="profilepic"
+                        value="images/dancing-lizard-lizard.gif" 
+                        onClick={(e) => setFinalTutor({...finalTutor, profile_pic: "images/dancing-lizard-lizard.gif"})}
+                        />
+                      <label class="drinkcard-cc dancinglizard" for="dancinglizard"></label>
+                      <input 
+                        id="test" 
+                        type="radio"
+                        name="profilepic"
+                        value="images/test.png" 
+                        onClick={(e) => setFinalTutor({...finalTutor, profile_pic: "images/test.png"})}
+                        />
+                      <label class="drinkcard-cc test" for="test"></label>
+                      <input 
+                        id="sus" 
+                        type="radio"
+                        name="profilepic"
+                        value="images/sus.png" 
+                        onClick={() => setFinalTutor({...finalTutor, profile_pic: "images/sus.png"})}
+                        />
+                      <label class="drinkcard-cc sus" for="sus"></label>
+                  </div>
+
                     <br></br>
                 </div>
               <button onClick={submitSignupForm} type='submit' id="submitBtn" className='submitBtn' >Sign up!</button>

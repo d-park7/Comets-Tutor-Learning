@@ -1,15 +1,23 @@
 import '../src/assets/css/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-
+import {MultiSelect} from "react-multi-select-component";
 import NavbarTutor from './NavbarTutor';
 import axios from 'axios';
 
 
 
 function ProfileTestTutor() {
+  
+  const options = [
+    { label: "05/05/23 4:00 PM", value:"2023-05-05-17:00:00", valueDay: "2023-05-05", valueTime: "17:00:00" },
+    { label: "05/05/23 5:00 PM", value:"2023-05-05-18:00:00", valueDay: "2023-05-05", valueTime: "18:00:00"},
+    { label: "05/05/23 6:00 PM", value:"2023-05-05-19:00:00", valueDay: "2023-05-05", valueTime: "19:00:00" },
+    { label: "05/05/23 7:00 PM", value:"2023-05-05-20:00:00", valueDay: "2023-05-05", valueTime: "20:00:00" },
+  ];
 
 
+  const [selected, setSelected] = useState([]);
 
   const [tutor, setTutor] = useState({
     profile_pic: '',
@@ -17,6 +25,7 @@ function ProfileTestTutor() {
     about_me: '',
     email: '',
     subject: '',
+    available_times: [],
   });
 
   const [tutorEdit, setTutorEdit] = useState({
@@ -39,6 +48,17 @@ function ProfileTestTutor() {
       })
   };
 
+  const submitDayTimes = (e) => {
+    axios
+    .put("http://127.0.0.1:8000/updatetutor/" + id, {
+      available_times: selected
+    }).then(function (response) {
+      console.log(response.data)
+    }).catch(function (response) {
+      alert()
+    })
+  };
+
   const getTutor = (e) => {
     e.preventDefault();
     axios
@@ -52,7 +72,8 @@ function ProfileTestTutor() {
           about_me: response.data["about_me"],
           date_of_birth: response.data["date_of_birth"],
           email: response.data["email"],
-          subject: response.data["subject"]
+          subject: response.data["subject"],
+          available_times: response.data["available_times"]
         })
         console.log(response.data)
       }).catch(function (response) {
@@ -111,7 +132,7 @@ function ProfileTestTutor() {
             <div class="col-4 col-6-medium col-12-small">
               <article class="box style2">
                 <p>{tutor.profile_pic}</p>
-                <a class="image featured"><img src="/images\cathit.gif" alt="" /></a>
+                <a class="image featured"><img src={tutor.profile_pic} alt="" /></a>
                 <h3>{tutor.name}</h3>
                 <p>{tutor.email}</p>
                 <p>{tutor.subject}</p>
@@ -138,7 +159,7 @@ function ProfileTestTutor() {
                       // value={tutor.email}
                       onChange={(e) => setTutorEdit({ ...tutorEdit, email: e.target.value })}
                     />
-                    <label> subject </label>
+                    <label> Subject </label>
                     <input list='subjects' name="subject" placeholder={tutor.subject}
                       // placeholder={tutor.email}
                       // type="text"
@@ -162,8 +183,16 @@ function ProfileTestTutor() {
                   </div>
                   <button onClick={submitEditForm} type='submit' id="submitBtn" className='submitBtn' >Submit</button>
                   {/* <input type="submit" /> */}
-
                 </form>
+                <h1>Select Available Times</h1>
+                <pre>{JSON.stringify(selected)}</pre>
+                  <MultiSelect
+                    options={options}
+                    value={selected}
+                    onChange={setSelected}
+                    labelledBy="Select"
+                  />
+                  <button onClick={submitDayTimes} type='submit' id='submitBtn' className='submitBtn'>Submit</button>
               </div>
             </div>
           </div>

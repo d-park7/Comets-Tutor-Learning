@@ -30,6 +30,7 @@ const StudentHomepage = () => {
       })
   )
 
+
   // const [student, setStudent] = useState({
   //   profile_pic: "",
   //   name: "",
@@ -67,7 +68,7 @@ const StudentHomepage = () => {
           <div class="col-4 col-6-medium col-12-small">
             <article class="box style1">
               <a class="image featured">
-                <img src="/images/amongus.png" alt="" />
+                <img src={student.profile_pic} alt="" />
               </a>
               <p>{student.name}</p>
               <p>{student.email}</p>
