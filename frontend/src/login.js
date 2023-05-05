@@ -69,8 +69,10 @@ import student2 from "./students.json"
           )
           .then(function (response) {
             console.log(response.data)
+            
 
             if (response.status == 200) {
+              setToken(response.data.access_token)
               if (response.data.user == 1) {
                 // localStorage.setItem("token", response.data.access_token)
                 setToken(response.data.access_token)
@@ -106,7 +108,7 @@ import student2 from "./students.json"
                   placeholder='Username'
                   type="text" 
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value.toLowerCase())}
                 />
                 <input 
                   placeholder='Password'

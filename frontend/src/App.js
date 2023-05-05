@@ -14,6 +14,7 @@ import StudentAppointment from './StudentAppt';
 
 import TutorPage from './TutorPage';
 
+import TutorSignup from './TutorSignup.js';
 
 import NavbarStudent from './navbarstudent';
 import StudentSignup from './StudentSignup';
@@ -31,6 +32,9 @@ function App() {
                 <Route exact path="/student/appointments" element={<StudentAppointment/>}></Route>
                 <Route exact path="/login/*" element={<LoginTest />}></Route>
                 <Route exact path="/" element={<HomePageApp />}></Route>
+                
+                {/* Note: Replace Tutor with Tutor Signup later */}
+                <Route exact path="/tutor-signup/" element={<TutorSignup />}></Route>
 
             </Routes>
         </BrowserRouter>

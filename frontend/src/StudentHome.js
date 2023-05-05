@@ -1,51 +1,150 @@
 //import React from 'react'
 import { useCalendlyEventListener, InlineWidget } from 'react-calendly';
+import '../src/assets/css/main.css';
+import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 
-import NavbarStudent from './navbarstudent';
 
 // Imports for testing tutor
 import React, { useEffect, useState } from 'react';
 import FastAPIClient from './client';
 import config from './config';
+import student2 from "./students.json"
+
 
 
 const client = new FastAPIClient(config)
 
 
+function BasicExample() {
+	const data = student2
+
+	
+	return (
+		
+	  <Table responsive striped bordered hover>
+		<thead>
+		  <tr>
+            
+            <th>Appointment</th>
+            <th>Tutor Info</th>
+			<th>Time</th>
+            <th>Date</th>
+            <th>Subject</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{data.map(eachone => {
+                return <tr>
+                    
+                    <td>{eachone._id}</td>
+                    <td>{eachone.tutor_info}</td>
+                    <td>{eachone.time}</td>
+                    <td>{eachone.date}</td>
+                    <td>{eachone.subject}</td>
+                </tr>})}
+			{/* {student1.map((student1) => renderStudent)}  */}
+		</tbody>
+	  </Table>
+	);
+  }
+  
+
 const StudentHomepage = () => {
 
-    const [tutorList, setTutorList] = useState([])
+    
+    const [student2, setStudent] = useState({
+        profile_pic: '',
+        name: '',
+        about_me: '',
+        date_of_birth: '',
+        email: '',
+        subject: '',
+      });
 
-    const getTutorList = (e) => {
+    const getStudent = (e) => {
         e.preventDefault();
-
-        client.getTutors().then((data) => {
-            // data.map(fields => (
-            //     <div>{fields}</div>
-            // ))
-            setTutorList(data?.result);
-            console.log(data)
-        });
-        
-    };
- 
-    useCalendlyEventListener({
-        onProfilePageViewed: () => console.log("onProfilePageViewed"),
-        onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
-        onEventTypeViewed: () => console.log("onEventTypeViewed"),
-        onEventScheduled: (e) => {if (e != null){console.log(e.data)}},
-    });
-
+        axios
+          .get("http://127.0.0.1:8000/student/64531536e93d2d5e1da70bbe",
+          )
+          .then(function (response) {
+            setStudent({
+              ...student2,
+              profile_pic: response.data["profile_pic"],
+              name: response.data["name"],
+              favorites: response.data["favorites"],
+              date_of_birth: response.data["date_of_birth"],
+              email: response.data["email"],
+              totalTime: response.data["total_time"]
+            })
+            console.log(response.data)
+          }).catch(function (response) {
+            alert()
+          })
+      };
+      window.onload = getStudent;
+    //   window.onbeforeunload
     return(
+
+        
         <div className='StudentHomepage'>
             {/* <h2>This is a list of tutors: {tutorList}</h2> */}
-            <h2>This is the student home page.</h2>    
-            <InlineWidget url='https://calendly.com/davidpark450'/>
-            <button onClick={getTutorList}>Click here for list of tutors</button>
-            <p>{tutorList}</p>
-        </div>
 
+            <div class="container-wide">
+                <div class="row">
+                    <div class="col-4 col-6-medium col-12-small">
+                        <article class="box style1">
+                        <a class="image featured"><img src="/images/amongus.png" alt="" /></a>
+                            <p>{student2.name}</p>
+                            <p>{student2.email}</p>
+                            <p>{student2.date_of_birth}</p>
+                            <p>{student2.favorites}</p>
+                            <p>{student2.totalTime}</p>
+                        </article>
+                    </div>
+                    <div class="col-8 col-6-medium col-12-small">
+                    <p>Accepted Appointment: </p>
+                        <article class="box style1">
+                            <BasicExample />
+                        </article>
+
+                        <p>Denied Appointment: </p>
+                        <article class="box style1">
+                            <BasicExample />
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <article id="contact" class="wrapper style4">
+		 		<div class="container medium">
+		 				<div class="col-12">
+		 					<hr />
+		 					<h3>Find us on ...</h3>
+		 					<ul class="social">
+		 						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+		 						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+		 						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+		 						<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
+		 						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+		 						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+		 					</ul>
+		 					<ul class="contact">
+		 						<li><h4>UTD Phone: 972-883-2111</h4></li>
+		 						<li><h4>The University of Texas at Dallas </h4></li>
+		 						<li><h4>800 W. Campbell Road, </h4></li>
+		 						<li><h4>Richardson, Texas 75080-3021</h4></li>
+		 					</ul>	
+		 					<hr />
+		 				</div>
+		 				<ul id="copyright">
+		 					<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		 				</ul>
+		 		</div>
+		 	</article>
+        </div>
     );
-};
+}; 
+
 
 export default StudentHomepage;
