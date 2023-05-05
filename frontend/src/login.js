@@ -38,7 +38,7 @@ import student2 from "./students.json"
     
     // GOES INTO CLIENT.JS OR A NEW FILE AUTH.JS
     const setToken = (token) => {
-      localStorage.setItme('token', token)
+      localStorage.setItem('token', token)
     }
     const fetchToken = (token) => {
       return localStorage.getItem('token')
@@ -69,8 +69,10 @@ import student2 from "./students.json"
           )
           .then(function (response) {
             console.log(response.data)
+            
 
             if (response.status == 200) {
+              setToken(response.data.access_token)
               if (response.data.user == 1) {
                 navigate("/tutor")
               } else if (response.data.user == 0) {
@@ -104,7 +106,7 @@ import student2 from "./students.json"
                   placeholder='Username'
                   type="text" 
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value.toLowerCase())}
                 />
                 <input 
                   placeholder='Password'

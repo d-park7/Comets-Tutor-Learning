@@ -167,8 +167,6 @@ class HomePage extends React.Component {
 		 		</div>
 		 	</article>
 			
-
-			
 		 	<article id="contact" class="wrapper style4">
 		 		<div class="container medium">
 		 				<div class="col-12">
@@ -200,4 +198,5 @@ class HomePage extends React.Component {
 	}
 
 }
+
 export default HomePage;

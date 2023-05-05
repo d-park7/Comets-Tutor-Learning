@@ -19,6 +19,10 @@ function Navbar() {
 					<li><a><Link to="/student/">Students</Link></a></li> {/* revert back to #student when done making studenthome page*/}
 					<li><a><Link to="/login/">Login</Link></a></li>
 					<li><a><Link to="/">Home</Link></a></li>
+
+					{/* Note: Tutor Signup does not show up on bar, looks hidden but not really */}
+					<li><a><Link to="/tutor-signup/">Tutor Signup</Link></a></li>
+					
                     {/* <NavLink to="/login"/> */}
 			</ul>
 			<Routes>
