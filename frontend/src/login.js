@@ -74,6 +74,8 @@ import student2 from "./students.json"
             if (response.status == 200) {
               setToken(response.data.access_token)
               if (response.data.user == 1) {
+                // localStorage.setItem("token", response.data.access_token)
+                setToken(response.data.access_token)
                 navigate("/tutor")
               } else if (response.data.user == 0) {
                 navigate("/student")

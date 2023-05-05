@@ -10,6 +10,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
+    # Access-Control-Allow-Origin: ["*"],
+    
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
@@ -21,6 +23,16 @@ app.include_router(students.router)
 app.include_router(tutors.router)
 app.include_router(appointments.router)
 
+
+# Add Access Control Allow Origin headers
+# @app.use((req, res, next) => {
+#   res.setHeader("Access-Control-Allow-Origin", "https://yoursite.com");
+#   res.header(
+#     "Access-Control-Allow-Headers",
+#     "Origin, X-Requested-With, Content-Type, Accept"
+#   );
+#   next();
+# });
 
 @app.get("/api/healthchecker")
 def root():

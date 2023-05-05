@@ -27,11 +27,12 @@ def get_password_hash(password):
 async def get_user(db, email: str):
     if (student := await db["students"].find_one({"email": email})) is not None:
         return student, 0
+        #return student
     elif (tutor := await db["tutors"].find_one({"email": email})) is not None:
         return tutor, 1
 
 async def authenticate_user(db, email: str, password: str):
-    user, account = await get_user(db, email)
+    user, account= await get_user(db, email) 
     if not user:
         return False, account
     if verify_password(password, user["hashed_password"]):

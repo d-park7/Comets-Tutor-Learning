@@ -1,6 +1,5 @@
 # add ignores like vscode files and js dependencies
 
-api/__pycache__/*
-api/routers/__pycache__/*
+**/__pycache__
 
 /node_modules

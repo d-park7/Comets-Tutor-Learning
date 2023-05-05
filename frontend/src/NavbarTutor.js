@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Routes , Route} from "react-router-dom" 
+import ProfileTestTutor from './EditProfileTutor';
 
 
 
@@ -14,6 +15,7 @@ function NavbarTutor() {
 
 					<li><a><Link to="/tutor/">Home</Link></a></li>
                     <li><a><Link to="/tutor/editprofile">Edit Profile</Link></a></li>
+
                     {/* <NavLink to="/login"/> */}
 			</ul>
 			<Routes>

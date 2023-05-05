@@ -151,6 +151,7 @@ class HomePage extends React.Component {
 		 					<section class="box style1">
 		 						<p>Who can be a student?</p>
 		 						<p>Anyone from Kindergarten through High School</p>								
+								<a href='http://localhost:3000/studentsignup'>Signup as a student here!</a>
 		 					</section>
 		 				</div>
 		 			</div>
