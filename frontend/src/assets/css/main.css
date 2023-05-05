@@ -40,6 +40,9 @@ body {
 
 ol, ul {
 	list-style: none;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 blockquote, q {
@@ -51,6 +54,7 @@ blockquote, q {
 		content: none;
 	}
 
+	
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -76,6 +80,7 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
+
 
 /* Basic */
 
@@ -233,6 +238,12 @@ input, select, textarea {
 		max-width: calc(100% - 50px);
 		width: 1200px;
 		
+	}
+
+	.container.wide{
+		margin: 0 auto;
+		max-width: calc(100% - 50px);
+		width: 50px;
 	}
 
 		.container.medium {
@@ -1522,7 +1533,7 @@ input, select, textarea {
 		min-width: 15%;
 		width: 50%;
 		height: 100vh;
-		border: 1px solid red;
+		border: 1px solid rgb(255, 255, 255);
 		margin: 0vw;
 		padding: 2vw;
 		position: relative;
@@ -1558,6 +1569,11 @@ input, select, textarea {
 		
 	}
 
+	.form-box img{
+		display: block;
+		width: 100%;
+	}
+
 	.form-box button {
 		display: block;
 		width: 20%;
@@ -1579,6 +1595,16 @@ input, select, textarea {
 		transition: 1s background ease;
 	}
 
+	.form-box ul {
+		list-style-type: none;
+		padding: 0;
+		width: 0;
+		text-align: center;
+	}
+
+	.form-box li{
+		text-align: center;
+	}
 	form label {
 		color: #2c2c2c;
 		font-weight: 700;
@@ -2010,10 +2036,12 @@ input, select, textarea {
 		box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
 		text-align: center;
 		padding: 2em;
+		width: auto;
 	}
 
 		.box.style1 {
 			padding: 3em 2em 3.5em 2em;
+			align-self: right;
 			
 		}
 
@@ -2549,3 +2577,4 @@ input, select, textarea {
 					}
 
 	}
+	
