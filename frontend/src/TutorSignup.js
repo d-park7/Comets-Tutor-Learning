@@ -17,6 +17,7 @@ function TutorSignup() {
         subject: '',
         total_time: 0,
         hashed_password: null,
+        calendly_user: null,
     });
 
     const [finalTutor, setFinalTutor] = useState({
@@ -34,7 +35,7 @@ function TutorSignup() {
                 console.log(response.data)
 
                 if (response.status == 201) {
-                    navigate("/")
+                    navigate("/login/")
                 }
             })
             .catch(function (response) {
@@ -56,6 +57,20 @@ function TutorSignup() {
             <form className='TutorSignupForm' onSubmit={handleSubmit}> 
               <label> Tutor Signup Page </label>
                 <div className='field1'>
+                  <p>Calendly Username:</p>
+                    <input 
+                      type="text" 
+                      onChange={ function (e) {
+                                  if (e.target.value.match(/^[^ ]+$/)) {
+                                    // NTS: check if .toLowerCase still needed
+                                    return setFinalTutor({...finalTutor, calendly_user: e.target.value.toLowerCase()})
+                                  }
+                                  else {
+                                    return setFinalTutor({...finalTutor, calendly_user: null})
+                                  }
+                                }
+                      }
+                    />
                     <p>Email:</p>
                     <input 
                       type="text" 
@@ -93,9 +108,9 @@ function TutorSignup() {
                       onChange={(e) => setFinalTutor({...finalTutor, name: e.target.value})}
                     />
                     <br></br>
-                    <p>Date of birth: (0000-00-00)</p>
+                    <p>Date of birth: </p>
                     <input 
-                      type="text" 
+                      type="date" 
                       onChange={(e) => setFinalTutor({...finalTutor, date_of_birth: e.target.value})}
                     />
                     <br></br>

@@ -21,8 +21,6 @@ function ProfileTestStudent() {
 
      const student_id = localStorage.getItem("token");
 
-    //  const student_id = "6452d21375e19ec785dc1739";
-
      const submitEditForm = () => {
        setStudentInfo({...studentEdit})
        axios
@@ -83,24 +81,6 @@ function ProfileTestStudent() {
                   <br></br>
                 </div>
 
-                {/* Student Info */}
-                {/* <div class="col-4 col-6-medium col-12-small">
-                  <article class="box style2">
-                    <h3>Student Info</h3>
-                    <p>{studentInfo.name}</p>
-                    <p>{studentInfo.email}</p>
-                  </article>
-                </div> */}
-
-                {/* Favorites List */}
-                {/* <div class="col-4 col-6-medium col-12-small">
-                  <article class="box style2">
-                    <h3>Favorites List</h3>
-                    <p>{studentInfo.favorites}</p>
-                  </article>
-                </div> */}
-
-
               </div>
 
               {/* Edit Fields */}
@@ -118,7 +98,7 @@ function ProfileTestStudent() {
                                     if (e.target.value.match(/^[a-zA-Z]+$/)) {
                                       return setStudentEdit({...studentEdit, name: e.target.value})
                                     }
-                                  }
+                                }
                         }
                       />
                     <br></br>

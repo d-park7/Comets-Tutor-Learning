@@ -34,6 +34,7 @@ class Tutor(BaseModel):
     date_of_birth: date
     subject: str
     total_time: int
+    calendly_user: str
     
     class Config:
         json_encoders = {ObjectId: str}        
@@ -49,6 +50,7 @@ class UpdateTutorModel(BaseModel):
     date_of_birth: Optional[date]
     subject: Optional[str]
     total_time: Optional[str]
+    calendly_user: Optional[str]
 
     class Config:
         json_encoders = {ObjectId: str}
@@ -59,11 +61,12 @@ class Student(BaseModel):
     email: str
     name: str = Field(...)
     date_of_birth: date = Field(...)
-    favorites: str
+    favorites: list
     total_time: int
     
     class Config:
         json_encoders = {ObjectId: str}
+
 
 class StudentInDB(Student):
     hashed_password: str
@@ -74,7 +77,7 @@ class UpdateStudentModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
-    favorites: Optional[str]
+    favorites: Optional[list]
     total_time: Optional[str]
 
     class Config:

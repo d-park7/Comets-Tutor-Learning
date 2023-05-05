@@ -14,31 +14,40 @@ import Navbar from './navbar';
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
+    // const [newStudent, setNewStudent] = useState({
+    //         profile_pic: profilePicture, 
+    //         email: email,
+    //         name: name,
+    //         date_of_birth: dateOfBirth,
+    //         "favorites: [],
+    //         "total_time": 0,
+    //         "hashed_password": password
+    // })
     
     const navigate = useNavigate()
 
     const signup = () => {
-      if ((name == "") & (password == "") & (email == "") & (dateOfBirth == "")) {
+      if ((name == "") || (password == "") || (email == "") || (dateOfBirth == "")) {
+        alert("Missing values: \nPlease fill out all fields.")
         return;
       } else {
         const student = {
-            "profile_pic": profilePicture, 
-            "email": email,
-            "name": name,
-            "date_of_birth": dateOfBirth,
-            "favorites": "",
-            "total_time": 0,
-            "hashed_password": password
+            profile_pic: profilePicture, 
+            email: email,
+            name: name,
+            date_of_birth: dateOfBirth,
+            favorites: [],
+            total_time: 0,
+            hashed_password: password
         }
         axios
-          .post("http://127.0.0.1:8000/createstudent", student,
-            { headers: { 'content-type': 'application/json'} }
+          .post("http://127.0.0.1:8000/createstudent/", student
           )
           .then(function (response) {
             console.log(response.data)
 
             if (response.status == 201) {
-                navigate("/student")
+                navigate("/login")
             }
               
           })
