@@ -106,7 +106,7 @@ import student2 from "./students.json"
                   placeholder='Username'
                   type="text" 
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value.toLowerCase())}
                 />
                 <input 
                   placeholder='Password'
