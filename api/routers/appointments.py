@@ -3,13 +3,10 @@ from fastapi.responses import JSONResponse, Response
 from fastapi.encoders import jsonable_encoder
 from typing import List
 
-
 from api.database import db
 from api.schemas import Appointment, UpdateAppointmentModel 
 
-
 router =  APIRouter()
-
 
 
 @router.post("/createappointment", response_description="Add new appointment", response_model=Appointment)
