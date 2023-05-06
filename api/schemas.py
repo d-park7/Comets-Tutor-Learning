@@ -49,7 +49,7 @@ class UpdateTutorModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
-    available_times: list
+    available_times: Optional[list]
     subject: Optional[str]
     total_time: Optional[str]
 

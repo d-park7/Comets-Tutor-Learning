@@ -10,7 +10,6 @@ function ProfileTestStudent() {
     email: "",
     name: "",
     favorites: [],
-    total_time: "0",
   });
 
   const [studentEdit, setStudentEdit] = useState({
@@ -22,7 +21,10 @@ function ProfileTestStudent() {
   const submitEditForm = () => {
     setStudentInfo({ ...studentEdit });
     axios
-      .put("http://127.0.0.1:8000/updatestudent/" + student_id, studentEdit)
+      .put("http://127.0.0.1:8000/updatestudent/" + student_id, {
+        email: studentEdit.email,
+        name: studentEdit.name,
+      })
       .then(function (response) {
         console.log(response.data);
       })

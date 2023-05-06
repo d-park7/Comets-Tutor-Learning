@@ -79,18 +79,13 @@ const TutorHomePage = () => {
       .catch(function (response) {
         alert();
       });
-  };
-
-  window.onpageshow = getTutor;
-
-  setTimeout(() => {
-    axios
+      axios
         .get("http://127.0.0.1:8000/appointment")
         .then(function (response) {
             setUpcomingAppointments(response.data.filter((appointment) => {
                 return appointment.tutor_info.tutor_email.includes(tutor.email)
             }).filter((appointment) => {
-                return (appointment.date >= currentDate && appointment.time >= currentTime)
+                return (appointment.date >= currentDate)
             }))
             setPastAppointments(response.data.filter((appointment) => {
                 return appointment.tutor_info.tutor_email.includes(tutor.email)
@@ -101,7 +96,10 @@ const TutorHomePage = () => {
         }).catch(function (response) {
             alert()
         })
-}, "3000");
+  };
+
+  window.onpageshow = getTutor;
+
 
   return (
 

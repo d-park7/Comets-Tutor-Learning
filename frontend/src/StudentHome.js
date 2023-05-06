@@ -58,22 +58,23 @@ const StudentHomepage = () => {
       })
       .catch(function (response) {
       });
-  };
-
-  setTimeout(() => {
-    axios
+      axios
       .get("http://127.0.0.1:8000/appointment")
       .then(function (response) {
         setUpcomingAppointments(
           response.data.filter((appointment) => {
             return appointment.student_info.student_email.includes(student.email)
           }).filter((appointment) => {
-            return (appointment.date >= currentDate && appointment.time >= currentTime)
+            return (appointment.date >= currentDate)
           }));
       })
       .catch(function (response) {
       });
-  }, "3000");
+  };
+
+  // setTimeout(() => {
+    
+  // }, "3000");
 
   window.onload = getStudent;
 
