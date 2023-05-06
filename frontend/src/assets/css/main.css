@@ -40,6 +40,9 @@ body {
 
 ol, ul {
 	list-style: none;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 blockquote, q {
@@ -50,6 +53,8 @@ blockquote, q {
 		content: '';
 		content: none;
 	}
+
+
 
 table {
 	border-collapse: collapse;
@@ -76,6 +81,7 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
+
 
 /* Basic */
 
@@ -109,6 +115,7 @@ input, select, textarea {
 		font-weight: 300;
 		font-size: 13pt;
 	}
+	
 
 	a {
 		-moz-transition: color .2s ease-in-out;
@@ -233,6 +240,12 @@ input, select, textarea {
 		max-width: calc(100% - 50px);
 		width: 1200px;
 		
+	}
+
+	.container.wide{
+		margin: 0 auto;
+		max-width: calc(100% - 50px);
+		width: 50px;
 	}
 
 		.container.medium {
@@ -783,7 +796,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/*flex-wrap: wrap;*/ 
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1028,7 +1040,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/* flex-wrap: wrap; */
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1273,7 +1284,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/* flex-wrap: wrap; */
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1532,13 +1542,18 @@ input, select, textarea {
 		min-width: 15%;
 		width: 50%;
 		height: 100vh;
-		/* border: 1px solid red; */
+		margin-left: 25%;
+	  }
+	
+	.form-box-2 {
+		min-width: 15%;
+		width: 50%;
+		height: 35vh;
 		margin: 0vw;
 		padding: 2vw;
 		position: relative;
-		/* position:relative for .prevBtn and .nextBtn position:absolute; */
-	  }
-	
+	}
+
 	.form-box  label {
 		display: block;
 		text-align: center;
@@ -1557,6 +1572,11 @@ input, select, textarea {
 		font-size: 20px;
 		color: black;
 		
+	}
+
+	.form-box img{
+		display: block;
+		width: 100%;
 	}
 
 	.form-box button {
@@ -1580,6 +1600,16 @@ input, select, textarea {
 		transition: 1s background ease;
 	}
 
+	.form-box ul {
+		list-style-type: none;
+		padding: 0;
+		width: 0;
+		text-align: center;
+	}
+
+	.form-box li{
+		text-align: center;
+	}
 	form label {
 		color: #2c2c2c;
 		font-weight: 700;
@@ -2011,10 +2041,12 @@ input, select, textarea {
 		box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
 		text-align: center;
 		padding: 2em;
+		width: auto;
 	}
 
 		.box.style1 {
 			padding: 3em 2em 3.5em 2em;
+			align-self: right;
 			
 		}
 
@@ -2479,6 +2511,7 @@ input, select, textarea {
 					margin-left: auto !important;
 					margin-right: auto !important;
 				}
+				
 
 				.box.style2 {
 					max-width: 32em;
@@ -2550,4 +2583,8 @@ input, select, textarea {
 						margin-top: 0;
 					}
 
+					
 	}
+	
+	
+	

@@ -1,5 +1,5 @@
 # This file creates all of our schemas for mongodb
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import time, date
 from bson import ObjectId
@@ -24,17 +24,18 @@ class PyObjectId(ObjectId):
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
 
+    
 
 class Tutor(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    profile_pic: str
+    profile_pic: Optional[str]
     about_me: str
     email: str = Field(...)
     name: str
     date_of_birth: date
+    available_times: list
     subject: str
     total_time: int
-    calendly_user: str
     
     class Config:
         json_encoders = {ObjectId: str}        
@@ -48,9 +49,9 @@ class UpdateTutorModel(BaseModel):
     email: Optional[str]
     name: Optional[str]
     date_of_birth: Optional[date]
+    available_times: Optional[list]
     subject: Optional[str]
     total_time: Optional[str]
-    calendly_user: Optional[str]
 
     class Config:
         json_encoders = {ObjectId: str}
@@ -89,17 +90,27 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str | None = None
+    
+class TableTutor(BaseModel):
+    tutor_name: str
+    tutor_email: str
+
+class TableStudent(BaseModel):
+    student_name: str
+    student_email: str
 
 class Appointment(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    tutor_info: str
-    student_info: str
+    tutor_info: TableTutor
+    student_info: TableStudent
     time: time
     date: date 
     subject: str
 
     class Config:
         json_encoders = {ObjectId: str}
+
+
 
 class UpdateAppointmentModel(BaseModel):
     tutor_info: Optional[str]
