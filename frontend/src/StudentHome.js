@@ -5,40 +5,40 @@ import axios from "axios";
 
 // Imports for testing tutor
 import React, { useState } from "react";
-import FastAPIClient from "./client";
-import config from "./config";
-
-const client = new FastAPIClient(config);
 
 
 const StudentHomepage = () => {
   const student_id = localStorage.getItem("token");
 
-  const [student, setStudent] = useState(
-    axios
-      .get("http://127.0.0.1:8000/student/" + student_id,
-      )
-      .then (function (response) {
-        return {
-          profile_pic: response.data["profile_pic"],
-          name: response.data["name"],
-          date_of_birth: response.data["date_of_birth"],
-          email: response.data["email"],
-          favorites: response.data["favorites"],
-          totalTime: response.data["total_time"]
+  let currentDate = new Date().toJSON().slice(0, 10);
+  let currentTime = new Date().toTimeString().slice(0,8);
+
+  const [student, setStudent] = useState({
+          profile_pic: "",
+          name: "",
+          date_of_birth: "",
+          email: "",
+          favorites: [],
+          totalTime: ""
         }
-      })
   )
+  const [upcomingAppointments, setUpcomingAppointments] = useState([
+    {
+      _id: "",
+      tutor_info: {
+        tutor_name: "",
+        tutor_email: "",
+      },
+      student_info: {
+        student_name: "",
+        student_email: "",
+      },
+      time: "",
+      date: "",
+      subject: "",
+    },
+  ]);
 
-
-  // const [student, setStudent] = useState({
-  //   profile_pic: "",
-  //   name: "",
-  //   date_of_birth: "",
-  //   email: "",
-  //   favorites: [],
-  //   totalTime: "",
-  // });
 
   const getStudent = (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ const StudentHomepage = () => {
           ...student,
           profile_pic: response.data["profile_pic"],
           name: response.data["name"],
-          favorites: response.data["favorites"],
+          favorites: response.data["favorites" ],
           date_of_birth: response.data["date_of_birth"],
           email: response.data["email"],
           totalTime: response.data["total_time"]
@@ -57,10 +57,26 @@ const StudentHomepage = () => {
         console.log(response.data);
       })
       .catch(function (response) {
-        alert();
       });
   };
+
+  setTimeout(() => {
+    axios
+      .get("http://127.0.0.1:8000/appointment")
+      .then(function (response) {
+        setUpcomingAppointments(
+          response.data.filter((appointment) => {
+            return appointment.student_info.student_email.includes(student.email)
+          }).filter((appointment) => {
+            return (appointment.date >= currentDate && appointment.time >= currentTime)
+          }));
+      })
+      .catch(function (response) {
+      });
+  }, "3000");
+
   window.onload = getStudent;
+
   return (
     <div className="StudentHomepage">
       <div class="container-wide">
@@ -68,24 +84,43 @@ const StudentHomepage = () => {
           <div class="col-4 col-6-medium col-12-small">
             <article class="box style1">
               <a class="image featured">
-                <img src={student.profile_pic} alt="" />
+                <img src={ "/" + student.profile_pic} alt="" />
               </a>
-              <p>{student.name}</p>
-              <p>{student.email}</p>
-              <p>{student.date_of_birth}</p>
-              <p>{student.favorites}</p>
-              <p>{student.totalTime}</p>
+              <p>Name: {student.name}</p>
+              <p>Email: {student.email}</p>
+              <p>Date of Birth: {student.date_of_birth}</p>
+              <p>Total Time Tutored: {student.totalTime}</p>
+              <p >Favorites:</p>
+                {student.favorites.map((element) => {
+                    return <p className="favorite-tutors">{element}</p>
+                })}
             </article>
           </div>
           <div class="col-8 col-6-medium col-12-small">
-            <p>Accepted Appointment: </p>
+            <p>Upcoming Appointment </p>
             <article class="box style1">
-              {/* <BasicExample /> */}
-            </article>
-
-            <p>Denied Appointment: </p>
-            <article class="box style1">
-              {/* <BasicExample /> */}
+            <Table responsive striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Tutor Info</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Subject</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {upcomingAppointments.map((appointment) => {
+                    return (
+                      <tr>
+                        <td>{appointment.tutor_info.tutor_name}</td>
+                        <td>{appointment.time}</td>
+                        <td>{appointment.date}</td>
+                        <td>{appointment.subject}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
             </article>
           </div>
         </div>

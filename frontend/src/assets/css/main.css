@@ -54,7 +54,8 @@ blockquote, q {
 		content: none;
 	}
 
-	
+
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -114,6 +115,7 @@ input, select, textarea {
 		font-weight: 300;
 		font-size: 13pt;
 	}
+	
 
 	a {
 		-moz-transition: color .2s ease-in-out;
@@ -794,7 +796,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/*flex-wrap: wrap;*/ 
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1039,7 +1040,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/* flex-wrap: wrap; */
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1284,7 +1284,6 @@ input, select, textarea {
 
 			.row {
 				display: flex;
-				/* flex-wrap: wrap; */
 				box-sizing: border-box;
 				align-items: stretch;
 			}
@@ -1543,11 +1542,7 @@ input, select, textarea {
 		min-width: 15%;
 		width: 50%;
 		height: 100vh;
-		/* border: 1px solid red; */
-		margin: 0vw;
-		padding: 2vw;
-		position: relative;
-		/* position:relative for .prevBtn and .nextBtn position:absolute; */
+		margin-left: 25%;
 	  }
 	
 	.form-box-2 {
@@ -2516,6 +2511,7 @@ input, select, textarea {
 					margin-left: auto !important;
 					margin-right: auto !important;
 				}
+				
 
 				.box.style2 {
 					max-width: 32em;
@@ -2587,5 +2583,8 @@ input, select, textarea {
 						margin-top: 0;
 					}
 
+					
 	}
+	
+	
 	

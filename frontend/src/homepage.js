@@ -2,9 +2,6 @@ import '../src/assets/css/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
-
-
-
 class HomePage extends React.Component {
 	render() {
 		return (
@@ -17,23 +14,26 @@ class HomePage extends React.Component {
 							</div>
 							<div class="col-8 col-7-large col-12-medium">
 								<header>
-									<h1>Hi. We are <strong>Group 3</strong>.</h1>
+									<br></br>
+									<br></br>
+									<br></br>
+									<h1>Welcome to Comets Tutor Learning!</h1>
 								</header>
 
 							</div>
 						</div>
 					</div>
 				</article>
-		{/* <!-- Tutor Listing --> */}
+			{/* Tutor Listing */}
 		 	<article id="tutorsPort" class="wrapper style3">
 		 		<div class="container">
 		 			<header>
-		 				<h2>Here’s some of our tutors.</h2>
+		 				<h2>Here are some of our tutors:</h2>
 		 			</header>
 		 			<div class="row">
 		 				<div class="col-4 col-6-medium col-12-small">
 		 					<article class="box style2">
-							 <a class="image featured"><img src="images/pic00.jpg" alt="" /></a>
+							 <a class="image featured"><img src="images/cathit.gif" alt="" /></a>
 		 						<h3>STEM Cat</h3>
 		 						<p>Math, Science</p>
 		 						<p>About me: I am a cat, my head hurts.</p>
@@ -66,13 +66,10 @@ class HomePage extends React.Component {
 						
 						
 		 			</div>
-		 			<footer>
-		 				<a href="#contact" class="button large scrolly">View other tutors</a>
-		 			</footer>
 		 		</div>
 		 	</article>
 
-		 	{/* // <!-- Students --> */}
+		 	{/* Students */}
 		 	<article id="studentPort" class="wrapper style2">
 		 		<div class="container">
 		 			<div class="row aln-center">
@@ -89,10 +86,10 @@ class HomePage extends React.Component {
 		 	</article>
 		
 
-		 {/* // <!-- About Us --> */}
+		 	{/* About us */}
 		 	<article id="aboutUs" class="wrapper style3">
 		 		<div class="container">
-		 			<p><b>This is a website for any student grades K-12 to connect to a UTD tutor for free.</b></p>
+		 			<p><b>This is a website for any student grades K-12 to connect to a UTD tutor for free!</b></p>
 		 			<p><b>All tutors are verified to be currently or have been a UTD student.</b></p>
 		 			<p><b>Any student will be able to find tutors for specific subjects and schedule an appointment with them.</b></p>
 		 		</div>
@@ -127,7 +124,5 @@ class HomePage extends React.Component {
 		</div>
 		)
 	}
-
 }
-
 export default HomePage;

@@ -1,5 +1,5 @@
 # This file creates all of our schemas for mongodb
-from pydantic import BaseModel, Field, EmailStr 
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import time, date
 from bson import ObjectId
@@ -36,7 +36,6 @@ class Tutor(BaseModel):
     available_times: list
     subject: str
     total_time: int
-    calendly_user: str
     
     class Config:
         json_encoders = {ObjectId: str}        
@@ -53,7 +52,6 @@ class UpdateTutorModel(BaseModel):
     available_times: list
     subject: Optional[str]
     total_time: Optional[str]
-    calendly_user: Optional[str]
 
     class Config:
         json_encoders = {ObjectId: str}

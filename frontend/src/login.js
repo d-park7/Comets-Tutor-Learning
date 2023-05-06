@@ -3,25 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-
 import Navbar from './navbar';
-
 
   const LoginTest = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-
-    const [conditions, setConditions] = useState({status: 404, accountType: 2});
-
     const navigate = useNavigate()  
     
     const setToken = (token) => {
       localStorage.setItem('token', token)
-    }
-    const fetchToken = (token) => {
-      return localStorage.getItem('token')
     }
     
     const login = () => {
@@ -48,9 +38,7 @@ import Navbar from './navbar';
             }
           })
           .catch(function (response) {
-            alert()
           })
-          
         }
     }
 
@@ -67,14 +55,14 @@ import Navbar from './navbar';
               <label> Login </label>
               <div className='field1'>
                 <input 
-                  placeholder='Username'
+                  placeholder='Email'
                   type="text" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value.toLowerCase())}
                 />
                 <input 
                   placeholder='Password'
-                  type="text" 
+                  type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   />
@@ -82,12 +70,6 @@ import Navbar from './navbar';
               <button onClick={login} type='submit' id="submitBtn" className='submitBtn' >Submit</button>
             </form>
           </div>
-            <div>{fetchToken() ? (
-              <p>you are logged in</p>
-            ) : (
-              <p>you are not logged in</p>
-            )}
-            </div>
         </div>
 
       ); 

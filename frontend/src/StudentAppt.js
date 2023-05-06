@@ -1,32 +1,23 @@
 import "../src/assets/css/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
-import { AiFillPlusCircle } from "react-icons/ai";
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import Table from "react-bootstrap/Table";
-import FastAPIClient from "./client";
-import config from "./config";
 import axios from "axios";
-import { PopupButton } from "react-calendly";
 import Select from "react-select";
-
 import NavbarStudent from "./navbarstudent";
-import { Button } from "bootstrap";
-
-const client = new FastAPIClient(config);
 
 function StudentAppointment() {
   const id = localStorage.getItem("token");
-  let name = "";
   const [tutorList, setTutorList] = useState([]);
   const [filterText, setFilterText] = useState("");
   const [favoriteTutors, setFavorites] = useState([]);
-  const [tutorName, setTutorName] = useState("");
   const [studentInfo, setStudentInfo] = useState({
-    student_name: '',
-    student_email: ''
-  })
-  const [selectedOption, setSelectedOption] = useState(null);
-
+    student_name: "",
+    student_email: "",
+    total_time: ""
+  });
+  const [apptSelectedOption, setApptselectedOption] = useState(null);
 
   const getTutor = (e) => {
     e.preventDefault();
@@ -37,61 +28,68 @@ function StudentAppointment() {
         console.log(response.data);
       })
       .catch(function (response) {
-        alert();
       });
     axios
       .get("http://127.0.0.1:8000/student/" + id)
       .then(function (response) {
         setFavorites(response.data["favorites"]);
-        setStudentInfo({
+        setStudentInfo(...{
           student_name: response.data["name"],
-          student_email: response.data["email"]
-        })
-        // console.log(response.data["favorites"])
+          student_email: response.data["email"],
+          total_time: response.data["total_time"]
+        });
       })
       .then(function () {
         console.log(...favoriteTutors);
       })
       .catch(function (response) {
-        alert();
       });
   };
 
-  function submitAppointment(value){
-    console.log(value)
+  function submitAppointment(value) {
+    console.log(value);
     axios
-    .post("http://127.0.0.1:8000/createappointment",{
-      tutor_info:{
-        tutor_name: value.name,
-        tutor_email: value.email
-      },
-      student_info: studentInfo,
-      time: selectedOption.valueTime,
-      date: selectedOption.valueDay,
-      subject: value.subject
-    }).then(function (response) {
-      console.log(response.data)
-    }).catch(function (response) {
-      alert()
-    }).then(()=>{
-      axios
-      .put(
-        "http://127.0.0.1:8000/updatetutor/"+value._id,{
-          available_times: value.available_times.filter((time)=>{
-              return !time.label.includes(selectedOption.label)
-            })
-        }
-      ).then(function (response) {
-        console.log(response.data)
-      }).catch(function (response) {
-        alert()
+      .post("http://127.0.0.1:8000/createappointment", {
+        tutor_info: {
+          tutor_name: value.name,
+          tutor_email: value.email,
+        },
+        student_info: studentInfo,
+        time: apptSelectedOption.valueTime,
+        date: apptSelectedOption.valueDay,
+        subject: value.subject,
       })
-
-    })
-
-
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (response) {
+      })
+      .then(() => {
+        axios
+          .put("http://127.0.0.1:8000/updatetutor/" + value._id, {
+            available_times: value.available_times.filter((time) => {
+              return !time.label.includes(apptSelectedOption.label);
+            }),
+            total_time: value.total_time + 1
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (response) {
+          });
+      })
+      .then(() => {
+        axios
+          .put("http://127.0.0.1:8000/updatestudent/" + id, {
+            total_time: studentInfo.total_time + 1
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (response) {
+          });
+      })
   }
-
 
   setTimeout(() => {
     axios
@@ -100,11 +98,11 @@ function StudentAppointment() {
         setFavorites(response.data["favorites"]);
         setStudentInfo({
           student_name: response.data["name"],
-          student_email: response.data["email"]
+          student_email: response.data["email"],
+          total_time: response.data["total_time"]
         });
       })
       .catch(function (response) {
-        alert();
       });
   }, "10000");
 
@@ -115,7 +113,6 @@ function StudentAppointment() {
         setFavorites(response.data["favorites"]);
       })
       .catch(function (response) {
-        alert();
       })
       .then(() => {
         if (favoriteTutors.includes(value)) {
@@ -130,8 +127,31 @@ function StudentAppointment() {
               console.log(response.data);
             })
             .catch(function (response) {
-              alert();
             });
+        }
+      });
+  }
+
+  function submitMinusClick(value) {
+    axios
+      .get("http//127.0.0.1:8000/student/" + id)
+      .then(function (response) {
+        setFavorites(response.data["favorites"]);
+      })
+      .catch(function (response) {})
+      .then(() => {
+        if (!favoriteTutors.includes(value)) {
+          alert("Tutor is not a part of your favorites!");
+        } else {
+          favoriteTutors.pop(value);
+          axios
+            .put("http://127.0.0.1:8000/updatestudent/" + id, {
+              favorites: favoriteTutors,
+            })
+            .then(function (response) {
+              console.log(response.data);
+            })
+            .catch(function (response) {});
         }
       });
   }
@@ -153,7 +173,6 @@ function StudentAppointment() {
         );
       })
       .catch(function (response) {
-        alert();
       });
     console.log({ tutorList });
   };
@@ -161,7 +180,6 @@ function StudentAppointment() {
   return (
     <div>
       <NavbarStudent />
-      {/* <GetAppointmentTutors /> */}
       <form className="form-app-sign-up">
         <div className="field1">
           <input
@@ -192,7 +210,6 @@ function StudentAppointment() {
           </tr>
         </thead>
         <tbody>
-          {/* {JSON.stringify(tutorList)} */}
           {tutorList.map((eachone) => {
             return (
               <tr>
@@ -201,21 +218,21 @@ function StudentAppointment() {
                 <td>{eachone.subject}</td>
                 <td>
                   <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
+                    defaultValue={setApptselectedOption}
+                    onChange={setApptselectedOption}
                     options={eachone.available_times}
                   />
-                  <button onClick={() => submitAppointment(eachone)}/>
+                  <button onClick={() => submitAppointment(eachone)} />
                 </td>
                 <td>
                   <AiFillPlusCircle onClick={() => submitClick(eachone.name)} />
-                  {/* <button onClick={setTutorName(eachone.name)}>
-                  </button> */}
+                  <AiFillMinusCircle
+                    onClick={() => submitMinusClick(eachone.name)}
+                  />
                 </td>
               </tr>
             );
           })}
-          {/* {student1.map((student1) => renderStudent)}  */}
         </tbody>
       </Table>
     </div>

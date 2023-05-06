@@ -1,19 +1,26 @@
 import '../src/assets/css/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {MultiSelect} from "react-multi-select-component";
 import NavbarTutor from './NavbarTutor';
 import axios from 'axios';
 
 
-
 function ProfileTestTutor() {
   
   const options = [
-    { label: "05/05/23 4:00 PM", value:"2023-05-05-17:00:00", valueDay: "2023-05-05", valueTime: "17:00:00" },
-    { label: "05/05/23 5:00 PM", value:"2023-05-05-18:00:00", valueDay: "2023-05-05", valueTime: "18:00:00"},
-    { label: "05/05/23 6:00 PM", value:"2023-05-05-19:00:00", valueDay: "2023-05-05", valueTime: "19:00:00" },
-    { label: "05/05/23 7:00 PM", value:"2023-05-05-20:00:00", valueDay: "2023-05-05", valueTime: "20:00:00" },
+    { label: "05/06/23 4:00 PM", value:"2023-05-06-17:00:00", valueDay: "2023-05-06", valueTime: "17:00:00" },
+    { label: "05/06/23 5:00 PM", value:"2023-05-06-18:00:00", valueDay: "2023-05-06", valueTime: "18:00:00"},
+    { label: "05/06/23 6:00 PM", value:"2023-05-06-19:00:00", valueDay: "2023-05-06", valueTime: "19:00:00" },
+    { label: "05/06/23 7:00 PM", value:"2023-05-06-20:00:00", valueDay: "2023-05-06", valueTime: "20:00:00" },
+    { label: "05/07/23 4:00 PM", value:"2023-05-07-17:00:00", valueDay: "2023-05-07", valueTime: "17:00:00" },
+    { label: "05/07/23 5:00 PM", value:"2023-05-07-18:00:00", valueDay: "2023-05-07", valueTime: "18:00:00"},
+    { label: "05/07/23 6:00 PM", value:"2023-05-07-19:00:00", valueDay: "2023-05-07", valueTime: "19:00:00" },
+    { label: "05/07/23 7:00 PM", value:"2023-05-07-20:00:00", valueDay: "2023-05-07", valueTime: "20:00:00" },
+    { label: "05/08/23 4:00 PM", value:"2023-05-08-17:00:00", valueDay: "2023-05-08", valueTime: "17:00:00" },
+    { label: "05/08/23 5:00 PM", value:"2023-05-08-18:00:00", valueDay: "2023-05-08", valueTime: "18:00:00"},
+    { label: "05/08/23 6:00 PM", value:"2023-05-08-19:00:00", valueDay: "2023-05-08", valueTime: "19:00:00" },
+    { label: "05/08/23 7:00 PM", value:"2023-05-08-20:00:00", valueDay: "2023-05-08", valueTime: "20:00:00" },
   ];
 
 
@@ -35,7 +42,6 @@ function ProfileTestTutor() {
   const id = localStorage.getItem("token");
 
   const submitEditForm = (e) => {
-    // console.log(id);
     e.preventDefault();
     setTutor({ ...tutorEdit })
     axios
@@ -44,7 +50,6 @@ function ProfileTestTutor() {
       .then(function (response) {
         console.log(response.data)
       }).catch(function (response) {
-        alert()
       })
   };
 
@@ -55,7 +60,6 @@ function ProfileTestTutor() {
     }).then(function (response) {
       console.log(response.data)
     }).catch(function (response) {
-      alert()
     })
   };
 
@@ -77,17 +81,10 @@ function ProfileTestTutor() {
         })
         console.log(response.data)
       }).catch(function (response) {
-        alert()
       })
   };
 
-
-
   window.onpageshow = getTutor;
-
-  // window.history.pushState(() => {
-  //   getTutor
-  // })
 
   setTimeout(() => {
     axios
@@ -109,30 +106,20 @@ function ProfileTestTutor() {
       })
   }, "3000");
 
-
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    //alert(`The name you entered was: ${name}\nThe email is: ${email}\nThe password is: ${password}`)
-    alert(`The name is: ${tutor.name}`)
   }
-
-  // window.onloadstart = getTutor;
 
   return (
     <div>
       <NavbarTutor />
 
-      {/* <h1> This is the Tutor profile edit page </h1> */}
-      {/* <body onLoad={getTutor} /> */}
       <div class="container">
         <div>
           <div class="row">
             <div class="col-4 col-6-medium col-12-small">
               <article class="box style2">
-                <p>{tutor.profile_pic}</p>
-                <a class="image featured"><img src={tutor.profile_pic} alt="" /></a>
+                <a class="image featured"><img src={ "/" + tutor.profile_pic} alt="Not visible" /></a>
                 <h3>{tutor.name}</h3>
                 <p>{tutor.email}</p>
                 <p>{tutor.subject}</p>
@@ -149,21 +136,16 @@ function ProfileTestTutor() {
                     <input
                       placeholder={tutor.name}
                       type="text"
-                      // value={tutor.name}
                       onChange={(e) => setTutorEdit({ ...tutorEdit, name: e.target.value })}
                     />
                     <label> Email </label>
                     <input
                       placeholder={tutor.email}
                       type="text"
-                      // value={tutor.email}
                       onChange={(e) => setTutorEdit({ ...tutorEdit, email: e.target.value })}
                     />
                     <label> Subject </label>
                     <input list='subjects' name="subject" placeholder={tutor.subject}
-                      // placeholder={tutor.email}
-                      // type="text"
-                      // value={tutor.email}
                       onChange={(e) => setTutorEdit({ ...tutorEdit, subject: e.target.value })}
                     />
                     <datalist id="subjects" >
@@ -182,10 +164,9 @@ function ProfileTestTutor() {
                     </label>
                   </div>
                   <button onClick={submitEditForm} type='submit' id="submitBtn" className='submitBtn' >Submit</button>
-                  {/* <input type="submit" /> */}
+
                 </form>
                 <h1>Select Available Times</h1>
-                <pre>{JSON.stringify(selected)}</pre>
                   <MultiSelect
                     options={options}
                     value={selected}
